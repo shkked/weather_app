@@ -16,13 +16,14 @@ export default defineNuxtConfig({
 	},
 	runtimeConfig: {
 		public: {
-			weatherApiKey: process.env.WEATHER_API_KEY,
+			apiKey: process.env.WEATHER_API_KEY,
+			apiURL: process.env.WEATHER_API_URL,
 		},
 	},
 	typescript: {
 		typeCheck: true,
 		tsConfig: {
-      
+
 		},
 	},
 	devtools: { enabled: true },
