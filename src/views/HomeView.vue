@@ -7,14 +7,14 @@
         </div>
       </div>
       <div class="ml-5 flex items-center">
-				<div class="text-4xl">Sunny</div>
-				<div class="text-4xl mr-2">,</div>
-        <div class="text-4xl font-bold mr-5">+25°</div>
-        <div class="text-4xl text-gray-300 font-bold">Today</div>
+				<div class="text-5xl">Sunny</div>
+				<div class="text-5xl mr-2">,</div>
+        <div class="text-5xl font-bold mr-5">+25°</div>
+        <div class="text-6xl text-gray-300 font-bold">Today</div>
       </div>
 			<!-- TODO добавить календарь -->
       <div class="ml-5 flex items-center">
-				
+				<v-date-picker />
       </div>
     </div>
   </div>
