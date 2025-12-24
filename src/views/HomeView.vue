@@ -14,12 +14,14 @@
       </div>
     </div>
     <div class="ml-5 flex items-center">
-      <vc-calendar :attributes="vcAttributes" />
+      <HomeCalendar />
+      <!-- <vc-calendar :attributes="vcAttributes" /> -->
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import HomeCalendar from '@/components/HomeCalendar.vue';
 import { ref } from 'vue';
 
 const vcAttributes = ref<object[]>([
