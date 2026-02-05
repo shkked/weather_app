@@ -1,48 +1,97 @@
-# weather_app
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+# 🌦 Weather App
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Веб‑приложение для погоды, разработанное на Vue 3 с использованием современного frontend‑стека. Проект демонстрирует работу с внешними API, управлением состоянием, кастомными UI‑компонентами и архитектурным разделением приложения.
 
-## Recommended Browser Setup
+---
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## 🚀 Стек технологий
 
-## Type Support for `.vue` Imports in TS
+- Vue 3 (Composition API)
+- TypeScript
+- Pinia (State Management)
+- Tailwind CSS
+- Axios
+- Open‑Meteo API
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+---
 
-## Customize configuration
+## ✨ Основные возможности
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### 📅 Календарь
+- Кастомный бесконечный календарь
+- Горизонтальная прокрутка дат
+- Выбор даты с синхронизацией погодных данных
 
-## Project Setup
+### 🌡 Текущая погода
+- Температура
+- Скорость ветра
+- Погодный статус
 
-```sh
+### ⏰ Почасовой прогноз
+- Фильтрация по выбранной дате
+- Горизонтальный скролл
+
+### 📊 Дневной прогноз
+- Минимальная и максимальная температура
+
+---
+
+## 🧠 Архитектура проекта
+
+```
+src
+ ├ api              // Работа с погодным API
+ ├ stores           // Pinia store
+ ├ components       // UI компоненты
+ ├ composables      // Переиспользуемая логика
+ ├ types            // Типы TypeScript
+ ├ pages            // Страницы приложения
+```
+
+---
+
+## 🔌 Используемый API
+
+Приложение использует бесплатный сервис:
+
+👉 https://open-meteo.com/
+
+Преимущества:
+- Не требует API ключ
+- Поддерживает hourly и daily прогноз
+- Высокая производительность
+
+---
+
+## ⚙️ Установка и запуск
+
+### 1. Клонировать репозиторий
+
+```
+git clone <repo-url>
+cd weather_app
+```
+
+### 2. Установить зависимости
+
+```
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 3. Запустить проект
 
-```sh
+```
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+---
 
-```sh
-npm run build
-```
+## 🏗 Планы развития
 
-### Lint with [ESLint](https://eslint.org/)
+- Добавление анимаций погоды
+- Кеширование данных
+- Улучшение UI/UX
+- Автообновление прогноза
 
-```sh
-npm run lint
-```
