@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-col min-h-screen dark:bg-gray-900 dark:text-white">
     <HeaderLayout class="px-4 pt-4" />
     <div class="container-fluid px-4">
       <router-view />

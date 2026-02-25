@@ -22,9 +22,9 @@
       <TextBlock titleText="Forecast">
         <div class="flex items-center flex-col w-[300px]">
           <div v-for="i in 10" :key="i" class="flex items-center gap-3">
-            <iconWeather name="sun-fill" class="w-6 h-6 text-gray-500 mr-2" />
-            <div class="text-gray-500 mb-2">Mon</div>
-            <div class="text-black font-bold">+22°</div>
+            <iconWeather name="sun-fill" class="w-6 h-6 text-gray-500 dark:text-white mr-2" />
+            <div class="text-gray-500 dark:text-white mb-2">Mon</div>
+            <div class="text-black dark:text-white font-bold">+22°</div>
           </div>
         </div>
       </TextBlock>

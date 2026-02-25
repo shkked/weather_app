@@ -15,7 +15,7 @@
             :class="{
               'bg-[rgb(38,50,137)] text-white rounded-full w-7 h-7': selectedDay === day.getDate(),
               'hover:bg-gray-200 rounded-full w-7 h-7': day.getDate() > selectedDay,
-              'text-gray-400 w-7 h-7 ': day.getDate() < todayDay,
+              'text-gray-400 dark:text-gray-600 hover:bg-gray-200 rounded-full w-7 h-7 ': day.getDate() < todayDay,
             }"
           >
             {{ day.getDate() }}
@@ -53,6 +53,7 @@ const daysOfWeek = (day: Date) => {
 const pickDay = (day: Date) => {
   if (day.getDate() < todayDay.value) return;
   selectedDay.value = day.getDate();
+  // emit('selectDay', day);
 };
 const getWeek = (startDate: Date): Date[] => {
   const start = new Date(startDate);
