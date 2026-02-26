@@ -11,7 +11,7 @@
           {{ daysOfWeek(day) }}
           <div
             @click="pickDay(day)"
-            class="mt-1 flex w-7 h-7 items-center justify-center gap-1 text-black"
+            class="mt-1 flex w-7 h-7 items-center justify-center gap-1 text-black dark:text-white"
             :class="{
               'bg-[rgb(38,50,137)] text-white rounded-full w-7 h-7': selectedDay === day.getDate(),
               'hover:bg-gray-200 rounded-full w-7 h-7': day.getDate() > selectedDay,
@@ -71,12 +71,12 @@ const dateWeek = ref<Date[][]>([
   getWeek(new Date()),
   getWeek(new Date(new Date().setDate(new Date().getDate() + 7))),
 ]);
-
+// TODO решить ошибки при скролле
 const onScroll = () => {
   if (!containerCalendar.value) return;
 
   const { scrollLeft, scrollWidth, clientWidth } = containerCalendar.value;
-
+  console.log({ scrollLeft, scrollWidth, clientWidth });
   if (scrollLeft + clientWidth >= scrollWidth - 50) {
     addNextWeek();
   }
