@@ -1,4 +1,12 @@
-export default function useDebounce(callback: () => void, delay = 1000): void {
-	// TODO доделать debounce
-	let timeout = setTimeout(callback, delay);
+type DebouncedFunction = (...args: unknown[]) => void;
+
+export default function useDebounce(callback: DebouncedFunction, delay = 1000): DebouncedFunction {
+  let timeout: ReturnType<typeof setTimeout> | null = null;
+
+  return (...args: unknown[]) => {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(() => callback(...args), delay);
+  };
 }

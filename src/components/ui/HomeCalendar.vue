@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- {{ dateWeek }} -->
     <div class="flex items-center overflow-x-auto max-w-[250px]" ref="containerCalendar" @scroll="onScroll">
       <div v-for="(week, weekIndex) in dateWeek" :key="weekIndex" class="flex items-center cursor-pointer">
         <div
@@ -30,6 +29,7 @@
 import { CalendarDays } from '@/types/calendar.types';
 import { nextTick, onMounted, ref } from 'vue';
 
+const emit = defineEmits(['selectDay']);
 const containerCalendar = ref<HTMLDivElement | null>(null);
 const todayDate = new Date();
 const todayDay = ref(todayDate.getDate());
@@ -53,7 +53,7 @@ const daysOfWeek = (day: Date) => {
 const pickDay = (day: Date) => {
   if (day.getDate() < todayDay.value) return;
   selectedDay.value = day.getDate();
-  // emit('selectDay', day);
+  emit('selectDay', day);
 };
 const getWeek = (startDate: Date): Date[] => {
   const start = new Date(startDate);
@@ -71,12 +71,11 @@ const dateWeek = ref<Date[][]>([
   getWeek(new Date()),
   getWeek(new Date(new Date().setDate(new Date().getDate() + 7))),
 ]);
-// TODO решить ошибки при скролле
+
 const onScroll = () => {
   if (!containerCalendar.value) return;
 
   const { scrollLeft, scrollWidth, clientWidth } = containerCalendar.value;
-  console.log({ scrollLeft, scrollWidth, clientWidth });
   if (scrollLeft + clientWidth >= scrollWidth - 50) {
     addNextWeek();
   }
@@ -96,19 +95,23 @@ const trimWeeks = () => {
   }
 };
 const addNextWeek = () => {
-  const lastWeek = dateWeek.value.at(-1)!;
-  const lastDay = lastWeek[6];
+  const lastWeek = dateWeek.value[dateWeek.value.length - 1];
+  if (!lastWeek) return;
 
-  dateWeek.value.push(getWeek(new Date(lastDay.setDate(lastDay.getDate() + 1))));
+  const lastDay = new Date(lastWeek[6]!);
+  const nextWeek = getWeek(new Date(lastDay.setDate(lastDay.getDate() + 1)));
+  dateWeek.value.push(nextWeek);
 
   trimWeeks();
 };
 
 const addPrevWeek = () => {
-  const firstWeek = dateWeek.value[0];
-  const firstDay = firstWeek[0];
-  console.log(getWeek(new Date(firstDay.setDate(firstDay.getDate() - 7))));
-  dateWeek.value.unshift(getWeek(new Date(firstDay.setDate(firstDay.getDate() - 7))));
+  const firstWeek = [...dateWeek.value[0]!];
+  if (!firstWeek[0]) return;
+
+  const firstDay = new Date(firstWeek[0]);
+  const prevWeek = getWeek(new Date(firstDay.setDate(firstDay.getDate() - 7)));
+  dateWeek.value.unshift(prevWeek);
 
   // компенсируем jump
   containerCalendar.value!.scrollLeft += containerCalendar.value!.clientWidth;

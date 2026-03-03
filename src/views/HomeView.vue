@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="ml-5 flex items-center">
-        <HomeCalendar />
+        <HomeCalendar @selectDay="setSelectedDate($event)" />
       </div>
     </div>
     <div class="mt-10">
@@ -36,6 +36,10 @@
 import HomeCalendar from '@/components/ui/HomeCalendar.vue';
 import TextBlock from '@/components/ui/TextBlock.vue';
 import iconWeather from '@/components/ui/iconWeather.vue';
+import { useWeatherStore } from '@/stores/weather.store';
+
+const weatherStore = useWeatherStore();
+const { setSelectedDate } = weatherStore;
 </script>
 
 <style scoped></style>
