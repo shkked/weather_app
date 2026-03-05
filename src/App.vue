@@ -19,5 +19,7 @@ onMounted(() => {
     document.documentElement.classList.toggle('dark', theme.value === 'dark');
     localStorage.setItem('theme', theme.value);
   }
+
+  
 });
 </script>

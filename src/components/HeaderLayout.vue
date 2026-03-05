@@ -6,7 +6,7 @@
         <img src="@/assets/logo.svg" alt="Logo" class="h-6 w-6 mr-2" />
       </div>
 
-      <span @click="openModalCityPicker" class="cursor-pointer hover:underline">{{ cityName }}</span>
+      <span @click="openModalCityPicker" class="cursor-pointer hover:underline">{{ location }}</span>
     </div>
     <button
       @click="toggleTheme"
@@ -20,16 +20,15 @@
 
 <script setup lang="ts">
 import router from '@/router';
-import { useCityPickerStore } from '@/stores/city_picker.store';
 import { useThemeStore } from '@/stores/theme.store';
-import { ref, toRefs } from 'vue';
+import { useWeatherStore } from '@/stores/weather.store';
+import { toRefs } from 'vue';
 
-const cityPickerStore = useCityPickerStore();
-const { openModalCityPicker } = cityPickerStore;
+const weatherStore = useWeatherStore();
+const { openModalCityPicker } = weatherStore;
+const { location } = toRefs(weatherStore);
 
 const themeStore = useThemeStore();
 const { toggleTheme } = themeStore;
 const { theme } = toRefs(themeStore);
-
-const cityName = ref<string>('Moscow');
 </script>

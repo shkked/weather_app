@@ -37,9 +37,14 @@ import HomeCalendar from '@/components/ui/HomeCalendar.vue';
 import TextBlock from '@/components/ui/TextBlock.vue';
 import iconWeather from '@/components/ui/iconWeather.vue';
 import { useWeatherStore } from '@/stores/weather.store';
+import { onMounted } from 'vue'
 
 const weatherStore = useWeatherStore();
 const { setSelectedDate } = weatherStore;
+
+onMounted(() => {
+  
+})
 </script>
 
 <style scoped></style>
