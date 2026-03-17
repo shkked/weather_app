@@ -1,11 +1,14 @@
 <template>
   <div>
     <DefaultLayout />
+
+    <ModalCityPicker />
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, toRefs } from 'vue';
+import ModalCityPicker from './components/ui/modals/modalCityPicker.vue';
 import DefaultLayout from './layouts/DefaultLayout.vue';
 import { useThemeStore } from './stores/theme.store';
 
@@ -19,7 +22,5 @@ onMounted(() => {
     document.documentElement.classList.toggle('dark', theme.value === 'dark');
     localStorage.setItem('theme', theme.value);
   }
-
-  
 });
 </script>
